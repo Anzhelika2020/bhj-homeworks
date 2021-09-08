@@ -67,27 +67,53 @@ class Autocomplete {
     this.list.innerHTML = html.join('');
   }
 
-  getMatches( text ) {
-    /*
-      TODO: этот метод нужно дописать
-      text - фраза, которую вводят в поле поиска
-      Метод должен вернуть массив.
+  // Задание
 
-      Он формируется на основе списка опций select-элемента (this.input)
-      Подходящие опции - те, чей текст содержит то, что есть в аргументе text
-      Необходимо вернуть массив объектов со свойствами:
-      {
-        text: 'Содержимое <option>',
-        value: 'Содержимое атрибута value'
-      }
-    */
-    return [
-      {
-        text: 'Чубакка',
-        value: '1'
-      }
-    ];
+  getMatches(text) {
+    const matches = [];
+
+    //this.input.options = пункты списка select (в виде HTMLCollection)
+
+    Array.from(this.input.options).forEach((elm) => {
+      let simbolsText = Array.from(elm.text);
+
+      const isSame = (inputSimbol, i) => {return inputSimbol === simbolsText[i]};
+      
+      if (Array.from(text).every(isSame)) {
+        matches.push({
+          text: elm.text, 
+          value: elm.value
+        })
+      };
+    }) 
+
+    return matches;
+  };
+
+/*
+    //Вариант через цикл for
+
+    const matches = [];
+
+    let selectOps = this.input.options;
+
+    for (let i = 0; i < selectOps.length; i++) {
+      let selectedText = Array.from(selectOps[i].text);
+
+      const isSame = (inputText, index) => {return inputText === selectedText[index]};
+      
+      if (Array.from(text).every(isSame)) {
+        matches.push({
+          text: selectOps[i].text, 
+          value: selectOps[i].value
+        })
+      };
+    };
+
+    return matches;
   }
-}
+*/
+};
+
 
 new Autocomplete( document.querySelector( '.autocomplete' ));
