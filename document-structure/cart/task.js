@@ -15,11 +15,13 @@ products.forEach((elm) => {
     };
   };
 
+
 //для кнопки плюс
   elm.querySelector(".product__quantity-control_inc").onclick = function() {
     +productQuantity.textContent ++;
   };
 
+  
 // для кнопки добавить в корзину
   elm.querySelector(".product__add").onclick = function() {
 
