@@ -27,9 +27,7 @@ products.forEach((elm) => {
 
     let productsInCart = Array.from(cart.querySelectorAll(".cart__product"));
 
-    let findedProduct = productsInCart.find((product) => {
-      return product.dataset.id === elm.dataset.id
-    });
+    let findedProduct = productsInCart.find((product) => product.dataset.id === elm.dataset.id);
 
     if (findedProduct) {
       findedProduct.querySelector(".cart__product-count").textContent = 

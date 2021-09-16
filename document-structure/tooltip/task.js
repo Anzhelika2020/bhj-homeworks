@@ -23,7 +23,7 @@ linksHasTooltip.forEach((elm) => {
 
       tooltipElm.textContent = elm.title;
 
-      tooltipElm.className = "tooltip_active";
+      tooltipElm.classList.add("tooltip_active");
 
       tooltipElm.style.left = `${elm.getBoundingClientRect().left}px`;
 
